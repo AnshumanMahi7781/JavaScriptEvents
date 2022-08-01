@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events and Event Handlers In JavaScript | OverView</title>
+    <style>
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      #displayFlex {
+        display: flex;
+      }
+      .container {
+        width: 50%;
+        border: 2px solid red;
+        margin: 30px;
+        margin-left: 0px;
+        background-color: none;
+        height: 300px;
+        display: inline-block;
+      }
+      p {
+        color: black;
+        font-size: 15px;
+      }
+      img {
+        width: 200px;
+      }
+      .buttonContainer {
+        border: 2px solid red;
+        padding: 20px;
+        margin-top: 80px;
+      }
+      .buttonContainer button {
+        margin-left: 60px;
+        padding: 5px 20px;
+        background-color: white;
+        border-radius: 10px;
+        font-weight: bolder;
+        cursor: pointer;
+        transition: all 1s ease-in-out;
+      }
+      .buttonContainer button:hover {
+        background-color: cadetblue;
+        transform: scale(0.8);
+      }
+      .resultcontainer {
+        border: 2px solid red;
+        width: fit-content;
+        margin: 50px auto;
+        font-size: 20px;
+        font-weight: bolder;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="displayFlex">
+      <div class="container">
+        <p id="AboutParagraph">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur,
+          omnis reprehenderit placeat quo eum praesentium odit qui, et nam
+          voluptatem officia cumque sit, maxime at quia reiciendis officiis
+          expedita magnam. Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Architecto ab ea sapiente eligendi? Totam, earum accusamus.
+          Nesciunt itaque sequi tenetur. Laborum consequatur, hic aut rem qui
+          amet autem fugit aliquam.
+        </p>
+      </div>
+      <img src="./image18.jpg" alt="" id="NatureImg" />
+    </div>
+    <div class="buttonContainer">
+      <button onclick="changeStyle()" id="changestylebtn">Change Style</button>
+      <button onclick="resetstyle()">Reset Style</button>
+      <button onclick="DisableRightClick()">Disable Right Click</button>
+      <button onclick="EnableRightClick()">Enable Right Click</button>
+    </div>
+    <div class="resultcontainer">
+      <span id="ResultShow">Our Result Show Here</span>
+    </div>
+
+    <script>
+      function changeStyle() {
+        let paragraph = document.getElementById("AboutParagraph");
+        let showresult = document.getElementById("ResultShow");
+        showresult.innerHTML = "The Style of Paragraph is changed";
+        paragraph.style.fontSize = "25px";
+        paragraph.style.padding = "20px";
+        paragraph.style.backgroundColor = "yellow";
+      }
+
+      function resetstyle() {
+        paragraph = document.getElementById("AboutParagraph");
+        let showresult = document.getElementById("ResultShow");
+        showresult.innerHTML = "The Style of Paragraph is Reset";
+        paragraph.style.fontSize = "15px";
+        paragraph.style.padding = "0px";
+        paragraph.style.backgroundColor = "white";
+      }
+      function DisableRightClick() {
+        let showresult = document.getElementById("ResultShow");
+        showresult.innerHTML = "Right Click Disabled on this WebPage.";
+        document.oncontextmenu = function () {
+          return false;
+        };
+      }
+      function EnableRightClick() {
+        let showresult = document.getElementById("ResultShow");
+        showresult.innerHTML = "Right Click Enabled on this WebPage.";
+        document.oncontextmenu = function () {
+          return true;
+        };
+      }
+      let MOuuseOverTest = document.getElementById("NatureImg");
+      MOuuseOverTest.addEventListener("mouseover", () => {
+        let showresult = document.getElementById("ResultShow");
+        showresult.innerHTML = "Mouse on Image.";
+        MOuuseOverTest.style.width = "300px";
+      });
+      let MouseOutTest = document.getElementById("NatureImg");
+      MouseOutTest.addEventListener("mouseout", () => {
+        let showresult = document.getElementById("ResultShow");
+        showresult.innerHTML = "Mouse Not On Image.";
+        MouseOutTest.style.width = "200px";
+      });
+    </script>
+  </body>
+</html>
